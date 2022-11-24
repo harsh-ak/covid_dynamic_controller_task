@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+covid_task.access_book_book,access_book_book,covid_task.model_book_book,base.group_user,1,1,1,1

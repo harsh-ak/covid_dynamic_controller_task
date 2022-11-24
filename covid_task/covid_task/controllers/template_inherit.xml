@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="books_template_custom" name="Books">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Books</t>
+            </t>
+            <t t-if="not books">
+                <p>There are currently no games for your account.</p>
+            </t>
+             <t t-if="books" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+
+                        <th class="text-left">Book Name</th>
+                        <th class="text-right">User Name</th>
+                        <th class="text-right">Book Type</th>
+                    </tr>
+                </thead>
+                <t t-foreach="books" t-as="book">
+                    <tr>
+                        <td><a t-attf-href="/my/books/#{book.id}"><t t-esc="book.name"/></a></td>
+                        <td class="text-right"><span t-field="book.user_id.name"/></td>
+                        <td class="text-right"><span t-field="book.book_type"/></td>
+                    </tr>
+                </t>
+
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_books" name="Show Books" customize_show="True" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Books</t>
+                <t t-set="url" t-value="'/my/books'"/>
+                <t t-set="placeholder_count" t-value="'book_count'"/>
+            </t>
+
+        </xpath>
+    </template>
+</odoo>

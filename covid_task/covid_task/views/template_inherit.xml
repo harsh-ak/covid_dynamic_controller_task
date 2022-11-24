@@ -1,0 +1,33 @@
+<odoo>
+
+    <record id="action_my_menuu"
+        model="ir.actions.act_window">
+        <field name="name">Create Book</field>
+        <field name="res_model">book.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<menuitem id="create_book_menu"
+            name="Create Book"
+            action="action_my_menuu"/>
+
+
+    <template id="product_inherit_custom" inherit_id="website_sale.product" active="True" customize_show="True"
+              name="Corona pandemic" priority="21">
+        <xpath expr="//div[@id='add_to_cart_wrap']/a[@id='add_to_cart']" position="replace">
+            <!--            <attribute name="class">btn btn-primary disabled</attribute> -->
+            <a role="button" id="add_to_cart_custom"
+               class="btn btn-primary disabled btn-lg js_check_product a-submit my-1 mr-1 px-5 font-weight-bold flex-grow-1"
+               href="#"><i class="fa fa-shopping-cart mr-2"/>ADD TO CART
+            </a>
+
+        </xpath>
+        <xpath expr="//div[hasclass('row')]" position="inside">
+            <marquee>
+                <div class="alert alert-warning" style="width:100%;" role="alert">
+                    Due to Pandemic, We are not accepting any orders right now
+                </div>
+            </marquee>
+        </xpath>
+    </template>
+</odoo>

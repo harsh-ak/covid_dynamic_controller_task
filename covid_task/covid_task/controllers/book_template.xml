@@ -1,0 +1,32 @@
+<odoo>
+<template id="book_template" name="Books">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Your Book Detail</t>
+            </t>
+             <t t-if="books" t-call="portal.portal_table">
+
+               <div class="container">
+                   <center><p><u>Your Book Details</u></p></center>
+                   <br></br>
+
+                   <div class="row">
+                       <div class="col-6">
+                           <h3>Book Name</h3>
+                           <h3>User Name</h3>
+                           <h3>Book Type</h3>
+                       </div>
+                       <div class="col-6">
+                           <p> <span t-esc="books.name"></span></p>
+                               <p><span t-esc="books.user_id.name"/></p>
+                               <p><span t-esc="books.book_type"/></p>
+                       </div>
+                   </div>
+               </div>
+
+            </t>
+        </t>
+    </template>
+</odoo>
